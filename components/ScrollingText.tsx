@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { BarebonesOutput } from "./BasicOutput"
+import { BarebonesOutput } from "./Terminal"
 
 const ScrollingText = ({ lyrics }) => {
     const [duration, setDuration] = useState(-60)

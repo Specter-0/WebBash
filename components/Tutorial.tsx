@@ -2,11 +2,11 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion'
 import { v4 } from "uuid"
 
-const currentStyle = {backgroundImage: 'linear-gradient(160deg, rgba(198,255,241,1) 17%, rgba(248,249,172,1) 35%, rgba(255,188,188,1) 55%, rgba(207,169,254,1) 77%, rgba(255,176,227,1) 93%)'}
+const currentStyle = {backgroundImage: 'linear-gradient(160deg, rgba(240,200,200,1) 17%, rgba(0,255,168,1) 35%, rgba(255,50,188,1) 55%, rgba(0,255,168,1) 77%, rgba(110,176,227,1) 93%)'}
 export const Step = ({ children = null, stage = null, placement = null }) => {
     return (
         <motion.div className='group bg-gradient-to-b rounded-xl flex items-center justify-center to-zinc-300 from-zinc-900'
-            style={stage === placement ? currentStyle : { backgroundImage: 'linear-gradient(149deg, rgba(210,210,210,1) 1%, rgba(27,27,27,1) 19%, rgba(131,130,130,1) 28%, rgba(187,187,187,1) 42%, rgba(0,0,0,1) 55%, rgba(255,255,255,1) 60%, rgba(57,55,55,1) 93%)' }}
+            style={stage === placement ? currentStyle : { backgroundImage: 'linear-gradient(149deg, rgba(210,210,210,1) 1%, rgba(27,27,27,1) 19%, rgba(131,130,130,1) 28%, rgba(187,187,187,1) 42%, rgba(0,0,0,1) 55%, rgba(255,255,255,1) 60%, rgba(57,55,55,1) 93%)', scale: 0.8 }}
             variants={stepVarients}
         >
             <div className={`group w-[99%] h-[98%] bg-zinc-900 rounded-xl flex flex-wrap text-center items-center justify-center ${stage === placement ? 'text-xl' : 'text-[10px]'} py-5 px-1`}>

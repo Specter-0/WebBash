@@ -1098,7 +1098,7 @@ export const FakeTerminal = () => {
     )
 }
 
-const BasicOutput = ({ children, className = "" }) => {
+export const BasicOutput = ({ children, className = "" }) => {
     return (
         <span className={'relative pl-5 overflow-wrap' + className}>
             <span className="max-w-full whitespace-normal break-all flex flex-wrap gap-x-20 gap-y-3 text-xl">
@@ -1109,7 +1109,7 @@ const BasicOutput = ({ children, className = "" }) => {
 } 
 
 
-const BarebonesOutput = ({ children, className = "" }) => {
+export const BarebonesOutput = ({ children, className = "" }) => {
     return (
         <span className={'relative pl-5 flex flex-wrap gap-x-20 gap-y-3 text-xl' + className}>
             {children}

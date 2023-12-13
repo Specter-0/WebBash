@@ -18,6 +18,9 @@ export default function Home() {
         <div className='w-full h-full p-7 hidden lg:flex'>
           <Terminal setPrevCommandOuter={setPrevCommand} greenCallback={() => router.push("/terminal")}/>
         </div>
+        <div className='w-full h-full p-7 flex items-center justify-center lg:hidden'>
+          <FakeTerminal/>
+        </div>
       </div>
       <div className='relative h-full w-1/4 hidden lg:flex'>
         <div className='w-full h-full before:border-gl before:gradient-grayed after:border-gl after:gradient-grayed-flipped after:anim-blink'>

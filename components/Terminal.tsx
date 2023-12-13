@@ -1071,7 +1071,7 @@ const GrayLetter = ({ children, className = null }) => (
 
 export const FakeTerminal = () => {
     return (
-        <main className='w-full md:w-3/4 h-3/4 rounded-lg flex flex-col shadow-2xl ring-1 ring-zinc-200/10'>
+        <main className='w-full h-3/4 rounded-lg flex flex-col shadow-2xl ring-1 ring-zinc-200/10'>
             <section className='w-full h-10 px-4 bg-zinc-700 rounded-t-lg flex flex-row justify-between items-center'>
                 <div className='w-28 flex flex-row gap-[1px]'>
                     <svg width="75" height="75">
@@ -1109,7 +1109,7 @@ export const BasicOutput = ({ children, className = "" }) => {
 } 
 
 
-export const BarebonesOutput = ({ children, className = "" }) => {
+const BarebonesOutput = ({ children, className = "" }) => {
     return (
         <span className={'relative pl-5 flex flex-wrap gap-x-20 gap-y-3 text-xl' + className}>
             {children}

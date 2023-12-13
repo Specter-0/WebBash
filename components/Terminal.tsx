@@ -182,7 +182,8 @@ const Terminal = ({ setPrevCommandOuter = null,  redCallback = null, yellowCallb
     }
 
     function getArgs() : Array<string> {
-        const matched = command.match(/(?<=\s)\S+/g)
+        const matched = command.match(/[^-]\b\w+/g);
+        if (command.split(" ")[1] == '..') return ['..']
         return matched ? matched[0].trim().split(" ") : [] 
     }
 
@@ -395,7 +396,7 @@ const Terminal = ({ setPrevCommandOuter = null,  redCallback = null, yellowCallb
                     break
                 }
                 else {
-                    if (getArgs()[0] == ".." && currentDir != "root") setCurrentDir(currentDir.split("/").slice(0, -1).join("/"))
+                    if (getArgs()[0] && currentDir != "root") setCurrentDir(currentDir.split("/").slice(0, -1).join("/"))
                     else if (keyInObject(content, getArgs())) setCurrentDir(`${currentDir}/${getArgs()[0]}`)
                     else {
                         output = (

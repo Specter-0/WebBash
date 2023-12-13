@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { BarebonesOutput } from "./Terminal"
 
 const ScrollingText = ({ lyrics }) => {
     const [duration, setDuration] = useState(-60)
@@ -20,6 +19,14 @@ const ScrollingText = ({ lyrics }) => {
                 }
             </span>
         </BarebonesOutput>
+    )
+}
+
+const BarebonesOutput = ({ children, className = "" }) => {
+    return (
+        <span className={'relative pl-5 flex flex-wrap gap-x-20 gap-y-3 text-xl' + className}>
+            {children}
+        </span>
     )
 }
 

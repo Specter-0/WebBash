@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --blue: rgba(0,200,255,1);
+  --green: rgba(0,255,168,1);
+  --green-power: rgba(0,255, 50,1);
+  --pink: rgb(237, 73, 255);
+  --gray: rgb(144, 144, 144);
+  --dark: rgb(52, 52, 52);
+  --simple-gradient: linear-gradient(135deg, var(--blue) 0%, var(--green) 50%, var(--pink) 100%);
+  --rolling-gradient: linear-gradient(135deg, var(--pink) 0%, var(--blue) 16%, var(--green) 33%, var(--blue) 50%, var(--green) 67%, var(--blue) 84%, var(--pink) 100%);
+}
+
+body {
+  font-family: "Space Mono", monospace;
+  color: white;
+  background-color: black;
+  background-image: url("/codedown.jpeg");
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+@layer utilities {
+  .rolling-gradient {
+    background: var(--rolling-gradient);
+  }
+
+  .gradient {
+    background: linear-gradient(135deg, rgba(230,125,52,0) 0%, var(--blue) 33.4%, var(--green) 66.7%, rgba(104,76,150,0) 100%);
+  }
+  .gradient-flipped {
+    background: linear-gradient(135deg, rgba(230,125,52,0) 0%, var(--green) 33.4%, var(--blue) 66.7%, rgba(104,76,150,0) 100%);
+  }
+  .gradient-grayed {
+    background: linear-gradient(135deg, rgba(230,125,52,0) 0%, var(--gray) 33.4%, var(--dark) 66.7%, rgba(104,76,150,0) 100%);
+  }
+  .gradient-grayed-flipped {
+    background: linear-gradient(135deg, rgba(230,125,52,0) 0%, var(--dark) 33.4%, var(--gray) 66.7%, rgba(104,76,150,0) 100%);
+  }
+  
+  .gradient-tail {
+    background: linear-gradient(rgba(128, 87, 143, 0), var(--blue) 50%, var(--green) 100%)  
+  }
+  .gradient-tail-flipped {
+    background: linear-gradient(rgba(128, 87, 143, 0), var(--green) 50%, var(--blue) 100%)  
+  }
+  .gradient-tail-grayed {
+    background: linear-gradient(rgba(128, 87, 143, 0), var(--gray) 50%, var(--dark) 100%)  
+  }
+  .gradient-tail-grayed-flipped {
+    background: linear-gradient(rgba(128, 87, 143, 0), var(--dark) 50%, var(--gray) 100%)  
+  }
+
+  .gradient-right-grayed {
+    background: linear-gradient(90deg, rgba(128, 87, 143, 0), var(--gray) 50%, var(--dark) 100%)  
+  }
+  .gradient-right-grayed-flipped {
+    background: linear-gradient(90deg, rgba(128, 87, 143, 0), var(--dark) 50%, var(--gray) 100%)  
+  }
+
+  .gradient-head {
+    background: linear-gradient(var(--blue), var(--green) 50%, rgba(237, 128, 59, 0) 100%)  
+  }
+  .gradient-head-flipped {
+    background: linear-gradient(var(--green), var(--blue) 50%, rgba(237, 128, 59, 0) 100%)  
+  }
+
+  .gradient-full {
+    background: linear-gradient(135deg, var(--green), var(--blue));
+  }
+  .gradient-full-flipped {
+    background: linear-gradient(135deg, var(--blue), var(--green));
+  }
+  .gradient-full-grayed {
+    background: linear-gradient(135deg, var(--gray), var(--dark));
+  }
+  .gradient-full-grayed-flipped {
+    background: linear-gradient(135deg, var(--dark), var(--gray));
+  }
+
+  .gradient-r-small {
+    background: linear-gradient(135deg, var(--green) 0%, var(--blue) 20%, rgba(230,125,52,0) 65%);
+  }
+
+  .text-cliped {
+    text-align: center;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .scrolling-gradient {
+    background-repeat: no-repeat;
+    background-size: 200% 100%;
+    background-position: 0 0;
+    transition: background-position 0.6s;
+  }
+
+  .scrolling-gradient:hover {
+    background-position: 100%;
+  }
+
+  .border-gt {
+    opacity: 1;
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 3px;
+    display: inline-block;
+  }
+
+  .border-gb {
+    opacity: 1;
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    display: inline-block;
+  }
+
+  .border-gl {
+    opacity: 1;
+    position: absolute;
+    content: "";
+    top: 0px;
+    bottom: 0px;
+    left: -1px;
+    display: inline-block;
+    width: 2px;
+    height: 100%;
+  }
+
+  .border-gr {
+    opacity: 1;
+    position: absolute;
+    content: "";
+    top: 0px;
+    bottom: 0px;
+    right: -1px;
+    display: inline-block;
+    width: 2px;
+    height: 100%;
+  }
+
+  .anim-blink {
+    animation-duration: 7s;
+    animation-name: blink;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes blink {
+    0% {opacity: 0;}
+    50% {opacity: 1;}
+    100% {opacity: 0;}
+  }
+
+  .image-filter {
+    background-image: linear-gradient(to right, var(--green) 0%, var(--blue) 100%)
+  }
+
+  .zoom-image {
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out
+  }
+
+
+  .text-shadow-green {
+    text-shadow: 2px 2px var(--green);
+  }
+  .text-shadow-blue {
+    text-shadow: 2px 2px var(--blue);
+  }
+  .text-shadow-pink {
+    text-shadow: 2px 2px var(--pink);
+  }
+  .text-shadow {
+    text-shadow: 1px 1px 2px black;
+  }
+}

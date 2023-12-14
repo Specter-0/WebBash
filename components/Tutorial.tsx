@@ -2,14 +2,14 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion'
 import { v4 } from "uuid"
 
-const currentStyle = {backgroundImage: 'linear-gradient(160deg, rgba(240,200,200,1) 17%, rgba(0,255,168,1) 35%, rgba(255,50,188,1) 55%, rgba(0,255,168,1) 77%, rgba(110,176,227,1) 93%)'}
+const currentStyle = {backgroundImage: 'linear-gradient(71deg, #0d1212, #3da077, #0d1212)'}
 export const Step = ({ children = null, stage = null, placement = null }) => {
-    return (
-        <motion.div className='group bg-gradient-to-b rounded-xl flex items-center justify-center to-zinc-300 from-zinc-900'
-            style={stage === placement ? currentStyle : { backgroundImage: 'linear-gradient(149deg, rgba(210,210,210,1) 1%, rgba(27,27,27,1) 19%, rgba(131,130,130,1) 28%, rgba(187,187,187,1) 42%, rgba(0,0,0,1) 55%, rgba(255,255,255,1) 60%, rgba(57,55,55,1) 93%)', scale: 0.8 }}
+    return (            
+        <motion.div className='group shadow-2xl rounded-xl flex items-center justify-center bg-gradient-to-b to-zinc-300 from-zinc-900'
+            style={stage === placement ? currentStyle : { backgroundImage: 'linear-gradient(-20deg, #0d1212, rgba(210,210,210,1), #0d1212)', scale: 0.8 }}
             variants={stepVarients}
         >
-            <div className={`group w-[99%] h-[98%] bg-zinc-900 rounded-xl flex flex-wrap text-center items-center justify-center ${stage === placement ? 'text-xl' : 'text-[10px]'} py-5 px-1`}>
+            <div className={`group w-[99%] h-[98%] cardBg rounded-xl flex flex-wrap text-center items-center justify-center ${stage === placement ? 'text-xl' : 'text-[10px]'} py-5 px-1`}>
                 {children}
             </div>
         </motion.div>
@@ -63,10 +63,12 @@ const steps = [
     "cd ..",
     "mkdir myFirstDir",
     "cd myFirstDir",
-    "touch me.txt",
-    "nano me.txt",
-    "less me.txt",
-    "rm me.txt",
+    "touch textfile.txt",
+    "less textfile.txt",
+    "nano textfile.txt",
+    "less textfile.txt",
+    "rm textfile.txt",
+    "cd .admin",
 ]
 
 
@@ -88,100 +90,126 @@ const Tutorial = ({ prevCommand }) => {
                 animate={'visible'}
                 exit={'exit'}
             >
-                { stage < 2 &&
+                {stage < 2 &&
                     <Step stage={stage} placement={0}>
                         <span>
-                            To run the tutorial you need to start it form its file, aka you need to find it, To find the file, use the <span className='font-bold'> 'ls' </span> command
+                            To run the tutorial, start it from its file. Locate the file using the <span className='font-bold'>'ls'</span> command.
                         </span>
                     </Step>
                 }
-                { stage < 2 &&
+                {stage < 2 &&
                     <Step stage={stage} placement={0}>
                         <span>
-                            Now you are viewing your current directory, you will see a <span className='font-bold'> 'tutorial.tut' </span> file
+                            Now, as you view your current directory, you'll find a <span className='font-bold'>'tutorial.tut'</span> file.
                         </span>
                     </Step>
                 }
-                { stage < 2 &&
+                {stage < 2 &&
                     <Step stage={stage} placement={0}>
                         <span>
-                            To run this file use the <span className='font-bold'> 'start' </span> command, followed by the filename of the tutorial, like this: <span className='font-bold'> 'start tutorial.tut' </span>
+                            Run the file using the <span className='font-bold'>'start'</span> command, followed by the filename: <span className='font-bold'>'start tutorial.tut'</span>.
                         </span>
                     </Step>
                 }
-                { stage < 4 && stage > 2 &&
+                {stage < 4 && stage > 2 &&
                     <Step stage={stage} placement={3}>
                         <span>
-                            To learn about the commands and how they work, use the <span className='font-bold'> 'help' </span> command, this will show you all of the commands available in this terminal
+                            To learn about available commands, use the <span className='font-bold'>'help'</span> command. This displays all commands in the terminal.
                         </span>
                     </Step>
                 }
-                { stage < 5 && stage > 2 &&
+                {stage < 5 && stage > 2 &&
                     <Step stage={stage} placement={4}>
                         <span>
-                            Now, the terminal is very packed with text, to get back to an empty terminal use the <span className='font-bold'> 'clear' </span> command, this commands cleans the terminal but only visualy, it does nothing to commands previusly run
+                            If the terminal is cluttered, use the <span className='font-bold'>'clear'</span> command to visually clean it. Note that it doesn't affect previously run commands.
                         </span>
                     </Step>
                 }
-                {  stage < 6 && stage > 2 &&
+                {stage < 6 && stage > 2 &&
                     <Step stage={stage} placement={5}>
                         <span>
-                            Now you can view your current directory with the <span className='font-bold'> 'ls' </span>  command, you are currently in the home directory, files are denoted by white text <span className='font-bold text-zinc-100'> file.txt </span> while folders are by blue text <span className='font-bold text-[#23FEFF]'> Directory </span>
+                            View the current directory with <span className='font-bold'>'ls'</span>. Files appear in white text, e.g., <span className='font-bold text-zinc-100'>file.txt</span>, and folders in blue text, e.g., <span className='font-bold text-[#23FEFF]'>Directory</span>.
                         </span>
                     </Step>
                 }
-                { stage < 7 && stage > 3 &&
+                {stage < 7 && stage > 3 &&
                     <Step stage={stage} placement={6}>
                         <span>
-                            To enter a directory use the <span className='font-bold'> 'cd' </span> command, this command takes one argument for witch directory to navigate to, try to navigate to the <span className='text-[#23FEFF] font-bold'> 'Documents' </span> folder
+                            Enter a directory using the <span className='font-bold'>'cd'</span> command. Try navigating to the <span className='text-[#23FEFF] font-bold'>'Documents'</span> folder. (Hint: Press <span className='font-bold'>'tab'</span> for suggestions.)
                         </span>
                     </Step>
                 }
-                { stage < 8 && stage > 4 &&
+                {stage < 8 && stage > 4 &&
                     <Step stage={stage} placement={7}>
                         <span>
-                            You can use the command <span className='font-bold'> 'pwd' </span> short for 'Print working directory' to get your current directory, try it!
+                            Use <span className='font-bold'>'pwd'</span> (Print Working Directory) to get the current directory.
                         </span>
                     </Step>
                 }
-                { stage < 9 && stage > 5 &&
+                {stage < 9 && stage > 5 &&
                     <Step stage={stage} placement={8}>
                         <span>
-                            Now to navigate out of the directory, use the <span className='font-bold'> 'cd' </span> command but the argument of 2 dots <span className='font-bold'> '..' </span> this will move you one directory back. So if you are in 'root/home/Documents', you will be moved to 'root/home' 
+                            To move out of a directory, use <span className='font-bold'>'cd ..'</span>. This command takes you one directory back, e.g., from <span className='font-bold'>'root/home/Documents'</span> to <span className='font-bold'>'root/home'</span>.
                         </span>
                     </Step>
                 }
-                { stage < 10 && stage > 6 &&
+                {stage < 10 && stage > 6 &&
                     <Step stage={stage} placement={9}>
-                        use the 'mkdir' command to make a direcotry called 'myFirstDir'
+                        <span>
+                            Create a new directory with <span className='font-bold'>'mkdir'</span>. Try <span className='font-bold'>'mkdir myFirstDir'</span>.
+                        </span>
                     </Step>
                 }
-                { stage < 11 && stage > 7 &&
+                {stage < 11 && stage > 7 &&
                     <Step stage={stage} placement={10}>
-                        go into the directory using cd
+                        <span>
+                            Enter the directory using <span className='font-bold'>'cd myFirstDir'</span>.
+                        </span>
                     </Step>
                 }
-                {  stage < 12 && stage > 8 &&
+                {stage < 12 && stage > 8 &&
                     <Step stage={stage} placement={11}>
-                        create a file inside this directory named me.txt with the command 'touch' [filename]
+                        <span>
+                            Great! You're inside your own directory. Now, create a file using <span className='font-bold'>'touch textfile.txt'</span>.
+                        </span>
                     </Step>
                 }
-                { stage < 13 && stage > 9 &&
+                {stage < 13 && stage > 9 &&
                     <Step stage={stage} placement={12}>
-                        to edit the file, use the nano text editor with the 'nano' [filename] 
+                        <span>
+                            Attempt to read the file with <span className='font-bold'>'less textfile.txt'</span>. If it's empty, we'll add content using the nano text editor.
+                        </span>
                     </Step>
                 }
-                { stage < 14 && stage > 10 &&
+                {stage < 14 && stage > 10 &&
                     <Step stage={stage} placement={13}>
-                        To learn the nano text editor, use the shortcut ctrl + h,
-                        then after exiting use the 'less' command with 'me.txt' as an argument
+                        <span>
+                            Open the nano editor with <span className='font-bold'>'nano textfile.txt'</span>.
+                        </span>
                     </Step>
                 }
-                { stage < 16 && stage > 11 &&
+                {stage < 15 && stage > 11 &&
                     <Step stage={stage} placement={14}>
-                        To delete a file use the 'rm' command with a file you created
+                        <span>
+                        Nano uses <span className='font-bold'>ctrl</span> shortcuts (denoted by <span className='font-bold'>^</span>). Use the help shortcut to learn more. Remember to save before exiting and then reread the file using <span className='font-bold'>'less textfile.txt'</span>.
+                        </span>
                     </Step>
                 }
+                {stage < 16 && stage > 12 &&
+                    <Step stage={stage} placement={15}>
+                        <span>
+                            You can remove the newly created file with the <span className='font-bold'>'rm textfile.txt'</span> command.
+                        </span>
+                    </Step>
+                }
+                {stage < 17 && stage > 13 &&
+                    <Step stage={stage} placement={16}>
+                        <span>
+                            Congratulations on completing the tutorial! Explore other terminal features and try new commands using <span className='font-bold'>'help'</span>. Good Luck!
+                        </span>
+                    </Step>
+                }
+
             </motion.div>
         </AnimatePresence>
     )

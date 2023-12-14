@@ -182,7 +182,7 @@ const Terminal = ({ setPrevCommandOuter = null,  redCallback = null, yellowCallb
     }
 
     function getArgs() : Array<string> {
-        const matched = command.match(/[^-]\b\w+/g);
+        const matched = command.match(/[^-]\b\S+/g);
         if (command.split(" ")[1] == '..') return ['..']
         return matched ? matched[0].trim().split(" ") : [] 
     }

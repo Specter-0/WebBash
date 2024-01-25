@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 
 const ScrollingText = ({ lyrics }) => {
     const [duration, setDuration] = useState(-60)
+    
     useEffect(() => {
         const timer = setInterval(() => {
             setDuration(prevState => prevState + 1)
@@ -9,8 +10,10 @@ const ScrollingText = ({ lyrics }) => {
                 clearInterval(timer)
             }
         }, 135)
+
+        return () => clearInterval(timer);
     }, [])
-    
+
     return (
         <BarebonesOutput>
             <span className="text-2xl w-[30rem] leading-[3.5rem]">
@@ -21,6 +24,7 @@ const ScrollingText = ({ lyrics }) => {
         </BarebonesOutput>
     )
 }
+
 
 const BarebonesOutput = ({ children, className = "" }) => {
     return (

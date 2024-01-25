@@ -396,8 +396,8 @@ const Terminal = ({ setPrevCommandOuter = null,  redCallback = null, yellowCallb
                     break
                 }
                 else {
-                    if (getArgs()[0] && currentDir != "root") setCurrentDir(currentDir.split("/").slice(0, -1).join("/"))
-                    else if (keyInObject(content, getArgs())) setCurrentDir(`${currentDir}/${getArgs()[0]}`)
+                    if (keyInObject(content, getArgs())) setCurrentDir(`${currentDir}/${getArgs()[0]}`)
+                    else if (getArgs()[0] && currentDir != "root") setCurrentDir(currentDir.split("/").slice(0, -1).join("/"))
                     else {
                         output = (
                             <BasicOutput>
